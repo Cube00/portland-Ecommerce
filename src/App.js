@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layouts from "./components/layouts";
+import Home from "./pages/home";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <Switch>
         <Layouts>
           <Route exact path="/">
-            this is main page
+            <Home />
           </Route>
         </Layouts>
       </Switch>

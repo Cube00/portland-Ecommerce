@@ -5,7 +5,6 @@ const Layouts = (props) => {
     <>
       <Header />
       {props.children}
-      Footer
     </>
   );
 };
