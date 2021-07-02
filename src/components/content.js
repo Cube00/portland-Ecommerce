@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { GET_PRODUCT } from "../reducers/action";
 import Item from "./item";
 
 const Content = ({ getProducts, store }) => {
+  const [currentId, setCurrentId] = useState("");
+
   useEffect(() => {
     getProducts();
   }, [getProducts]);
@@ -13,7 +15,14 @@ const Content = ({ getProducts, store }) => {
       <section className="content-items">
         {store.items &&
           store.items.map((item) => {
-            return <Item key={item.id} item={item} />;
+            return (
+              <Item
+                key={item.id}
+                item={item}
+                currentId={currentId}
+                setCurrentId={setCurrentId}
+              />
+            );
           })}
       </section>
     </>
