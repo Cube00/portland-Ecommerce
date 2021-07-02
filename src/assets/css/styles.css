@@ -417,3 +417,58 @@ nav ul li a {
 .shipping {
   margin-left: 40px;
 }
+
+.content-items {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 280px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.item-img {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-img img {
+  width: 200px;
+}
+
+.item-info h2 {
+  margin: 0 20px;
+  text-align: center;
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.item-info h4 {
+  margin: 10px 20px;
+  text-align: center;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+  color: #c3c3c3;
+  font-weight: normal;
+}
+
+.item-info h3 {
+  margin: 10px 20px 30px;
+  text-align: center;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+  color: #31344e;
+}
