@@ -1,6 +1,6 @@
 import { GrFormClose } from "react-icons/gr";
 
-const Item = ({ item, currentId, setCurrentId }) => {
+const Item = ({ item, currentId, setCurrentId, addItem }) => {
   const { name, color, price, size, amount, img, id } = item;
 
   const getCurrent = () => {
@@ -29,7 +29,13 @@ const Item = ({ item, currentId, setCurrentId }) => {
           </div>
           <div className={currentId === id ? "addit-if show" : "addit-if"}>
             <span>{size}</span>
-            <button>BUY NOW</button>
+            <button
+              onClick={() => {
+                addItem(item);
+              }}
+            >
+              BUY NOW
+            </button>
           </div>
         </div>
       </div>

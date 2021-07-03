@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { GET_PRODUCT } from "../reducers/action";
+import { GET_PRODUCT, ADD_ITEM } from "../reducers/action";
 import Item from "./item";
 
-const Content = ({ getProducts, store }) => {
+const Content = ({ getProducts, store, addItem }) => {
   const [currentId, setCurrentId] = useState("");
 
   useEffect(() => {
@@ -21,6 +21,9 @@ const Content = ({ getProducts, store }) => {
                 item={item}
                 currentId={currentId}
                 setCurrentId={setCurrentId}
+                addItem={() => {
+                  addItem(item);
+                }}
               />
             );
           })}
@@ -29,14 +32,17 @@ const Content = ({ getProducts, store }) => {
   );
 };
 
-const mapStateToProps = ({ contentStore: store }) => {
-  return { store };
+const mapStateToProps = ({ contentStore: store, cartReducer: cart }) => {
+  return { store, cart };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => {
       dispatch({ type: GET_PRODUCT });
+    },
+    addItem: (item) => {
+      dispatch({ type: ADD_ITEM, payload: item });
     },
   };
 };

@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { BiSearch } from "react-icons/bi";
+import { connect } from "react-redux";
 
-const Header = () => {
+const Header = ({ state }) => {
   return (
     <>
       <header>
@@ -34,13 +35,15 @@ const Header = () => {
             </ul>
           </nav>
           <div className="block-1h">
-            <div className="shopping-cart-tool">
-              <button className="cart-btn">
-                <RiShoppingCart2Fill />
-              </button>
-              <span className="t-sp">CART</span>
-              <span className="num">0</span>
-            </div>
+            <Link to="/cart">
+              <div className="shopping-cart-tool">
+                <button className="cart-btn">
+                  <RiShoppingCart2Fill />
+                </button>
+                <span className="t-sp">CART</span>
+                <span className="num">{state.cart.length}</span>
+              </div>
+            </Link>
             <button className="sign-in">SIGN IN</button>
           </div>
         </div>
@@ -88,4 +91,8 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = ({ cartReducer: state }) => {
+  return { state };
+};
+
+export default connect(mapStateToProps)(Header);
