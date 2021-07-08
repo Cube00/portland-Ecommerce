@@ -716,6 +716,7 @@ nav ul li a {
 }
 
 .inps {
+  position: relative;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
@@ -733,7 +734,7 @@ nav ul li a {
   margin: 0 0 20px;
   padding: 10px;
   background-color: #fff;
-  border: 1px solid#ddd;
+  border: 1px solid#f6f6f6;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -756,5 +757,35 @@ nav ul li a {
   color: #fff;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+.ship-type {
+  padding: 12px;
+  background-color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  border: 1px solid#f6f6f6;
+  cursor: pointer;
+}
+
+.drop-down {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  z-index: 2;
+}
+
+.dropped {
+  display: block;
+}
+
+.cat-del {
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f6f6f6;
+  font-size: 13px;
+  border-bottom: 1px solid#eee;
   cursor: pointer;
 }

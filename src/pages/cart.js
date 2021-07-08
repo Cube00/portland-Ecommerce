@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { connect } from "react-redux";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { REMOVE_ITEM, INCREASE, DECREASE } from "../reducers/action";
 
 const Cart = ({ state, remove, increase, decrease }) => {
+  const [drop, setDrop] = useState(false);
+  const [del, setDel] = useState("Standard Delivery - 5 $");
+  const [priceDel, setPriceDel] = useState(5);
+
   const { cart } = state;
   return (
     <div className="cart-content">
@@ -46,7 +51,7 @@ const Cart = ({ state, remove, increase, decrease }) => {
                   <h2>${cartItem.price}</h2>
                 </div>
                 <div className="prod-inf x-sp">
-                  <h2>${cartItem.price * cartItem.amount}</h2>
+                  <h2>${(cartItem.price * cartItem.amount).toFixed(2)}</h2>
                 </div>
               </div>
             );
@@ -62,13 +67,52 @@ const Cart = ({ state, remove, increase, decrease }) => {
           <span>
             $
             {cart.length > 0 &&
-              cart.reduce((acc, curr) => {
-                return (acc += curr.price * curr.amount);
-              }, 0)}
+              cart
+                .reduce((acc, curr) => {
+                  return (acc += curr.price * curr.amount);
+                }, 0)
+                .toFixed(2)}
           </span>
         </div>
         <div className="inps">
           <h3>SHIPPING</h3>
+          <div
+            onClick={() => {
+              if (drop === false) {
+                setDrop(true);
+              } else {
+                setDrop(false);
+              }
+            }}
+            className="ship-type"
+          >
+            <span>{del}</span>
+          </div>
+          <div
+            onClick={() => {
+              setDrop(false);
+            }}
+            className={drop ? "drop-down dropped" : "drop-down"}
+          >
+            <div
+              className="cat-del"
+              onClick={() => {
+                setDel("Standard Delivery - 5 $");
+                setPriceDel(5);
+              }}
+            >
+              Standard Delivery - 5 $
+            </div>
+            <div
+              className="cat-del"
+              onClick={() => {
+                setDel("Premium Delivery - 10 $");
+                setPriceDel(10);
+              }}
+            >
+              Premium Delivery - 10 $
+            </div>
+          </div>
         </div>
         <div className="inps bordered">
           <h3>PROMO CODE</h3>
@@ -83,9 +127,12 @@ const Cart = ({ state, remove, increase, decrease }) => {
         <div className="total-cost">
           <span>TOTAL COST</span>$
           {cart.length > 0 &&
-            cart.reduce((acc, curr) => {
-              return (acc += curr.price * curr.amount);
-            }, 0)}
+            cart
+              .reduce((acc, curr) => {
+                console.log(acc);
+                return (acc += curr.price * curr.amount);
+              }, priceDel)
+              .toFixed(2)}
         </div>
         <button className="checkout">CHECKOUT</button>
       </div>
